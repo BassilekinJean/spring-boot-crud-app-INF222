@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Conteneur PostgreSQL
+  postgres:
+    image: postgres:16.9
+    shm_size: 128mb
+    container_name: postgres_bassilekin_21T2352
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: basileking
+      POSTGRES_DB: hospital_inf222
+
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8085:8081
+
+  # Conteneur Spring Boot
+  app:
+    build: .  # Utilise le Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres  # Attend que PostgreSQL soit prêt
+    container_name: app_bassilekin_21T2352
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hospital_inf222
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: basileking
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: true  # Ajouté pour afficher les requêtes SQL
+
+volumes:
+  postgres_data:  # Persiste les données de la BD

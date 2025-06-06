@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TpInf222HopitalApplication<tp-inf222-hopital>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.bassilekin.inf222.tp_inf222_hopital.TpInf222HopitalApplication",
+            "projectName": "tp-inf222-hopital",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
