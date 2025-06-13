@@ -1,4 +1,7 @@
-## Pour importer ou exporter les données de la BD du conteneur :
+## Documentation Swagger poert via docker 8081
+    ** http://localhost:8080/api/swagger-ui.html
+
+# Pour importer ou exporter les données de la BD du conteneur :
 
 ---
 ## 1. **Créer un dump de ta base PostgreSQL**
