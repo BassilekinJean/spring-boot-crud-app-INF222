@@ -1,3 +1,27 @@
+## Pour importer ou exporter les données de la BD du conteneur :
+
+---
+## 1. **Créer un dump de ta base PostgreSQL**
+Sur ta machine (remplace `hospital_db` par le nom de ton conteneur db si besoin) :
+```bash
+docker exec -t hospital_db pg_dump -U bassilekin hospital_flask > dump.sql
+```
+- `hospital_db` : nom du conteneur PostgreSQL (vérifie avec `docker ps`)
+- `bassilekin` : utilisateur PostgreSQL
+- `hospital_flask` : nom de ta base de données
+- `dump.sql` : fichier SQL généré sur ta machine
+---
+## 2. **Transférer le fichier `dump.sql`**
+Copie ce fichier sur la machine de destination (par clé USB, scp, etc.).
+---
+## 3. **Restaurer le dump sur la nouvelle machine**
+Place `dump.sql` dans le dossier de ton projet, puis lance :
+```bash
+cat dump.sql | docker exec -i hospital_db psql -U bassilekin -d hospital_flask
+```
+- Cela injecte le contenu du dump dans la base PostgreSQL du conteneur.
+---
+
 
 ## PatientController
 
