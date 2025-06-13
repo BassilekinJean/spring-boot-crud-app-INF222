@@ -24,6 +24,7 @@ services:
 
   # Conteneur Spring Boot
   app:
+    image: spring-app-inf222
     build: .  # Utilise le Dockerfile
     ports:
       - "8081:8080"
