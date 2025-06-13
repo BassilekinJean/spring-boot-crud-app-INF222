@@ -12,7 +12,9 @@ docker exec -t hospital_db pg_dump -U bassilekin hospital_flask > dump.sql
 - `dump.sql` : fichier SQL généré sur ta machine
 ---
 ## 2. **Transférer le fichier `dump.sql`**
-Copie ce fichier sur la machine de destination (par clé USB, scp, etc.).
+
+ Copie ce fichier sur la machine de destination (par clé USB, scp, etc.).
+ 
 ---
 ## 3. **Restaurer le dump sur la nouvelle machine**
 Place `dump.sql` dans le dossier de ton projet, puis lance :
