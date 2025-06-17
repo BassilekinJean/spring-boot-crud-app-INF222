@@ -18,7 +18,5 @@ public record PatientDTO(
     List<MaladieSummaryDTO> maladiesAffectees // Summarized list of associated Maladies
 
 ) {
-    // You can add custom constructors or methods if needed, but records handle most boilerplate.
-    // Ensure that if 'Personnes' or 'Patients' has auditing fields (created/modified date/by),
-    // those are mapped here. I've added placeholders for dateCreation/dateModification.
+
 }
