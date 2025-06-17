@@ -149,11 +149,11 @@ public class MaladieService {
             ));
         stats.put("maladies par type", typeCounts);
 
-        stats.put("Maladie avec traitement disponible", maladieRepository.countByTraitementsIsNotEmpty());
+        stats.put("Nombres de traitement disponible", maladieRepository.countByTraitementsIsNotEmpty());
 
-        stats.put("symptomes les plus manifester", maladieRepository.countTotalUniqueSymptoms());
+        stats.put("Compte de symptomes manifester", maladieRepository.countTotalUniqueSymptoms());
 
-        stats.put("traitement les plus utilisé", maladieRepository.countTotalUniqueTreatments());
+        stats.put("Compte de traitements", maladieRepository.countTotalUniqueTreatments());
 
         List<Object[]> diseasesByPatientCount = maladieRepository.countPatientsPerDisease();
         Map<String, Long> patientsPerDisease = diseasesByPatientCount.stream()
