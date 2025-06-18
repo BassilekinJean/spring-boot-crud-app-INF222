@@ -1,5 +1,5 @@
 ## Documentation Swagger port via docker 8081
-     http://localhost:8080/api/swagger-ui.html
+     http://localhost:8081/api/swagger-ui.html
 
 # Pour importer ou exporter les données de la BD du conteneur :
 
@@ -7,22 +7,13 @@
 ## 1. **Créer un dump de ta base PostgreSQL**
 Sur ta machine (remplace `hospital_db` par le nom de ton conteneur db si besoin) :
 ```bash
-docker exec -t hospital_db pg_dump -U bassilekin hospital_flask > dump.sql
+docker exec -t postgres_bassilekin_21T2352 pg_dump -U postgres hospital_inf222 > dump.sql
 ```
-- `hospital_db` : nom du conteneur PostgreSQL (vérifie avec `docker ps`)
-- `bassilekin` : utilisateur PostgreSQL
-- `hospital_flask` : nom de ta base de données
-- `dump.sql` : fichier SQL généré sur ta machine
----
-## 2. **Transférer le fichier `dump.sql`**
-
- Copie ce fichier sur la machine de destination (par clé USB, scp, etc.).
- 
----
-## 3. **Restaurer le dump sur la nouvelle machine**
-Place `dump.sql` dans le dossier de ton projet, puis lance :
+## 2. **Restaurer le dump sur la nouvelle machine**
+Vérifier que `dump.sql` est dans le dossier de ton projet, puis lance :
+    password: basileking
 ```bash
-cat dump.sql | docker exec -i hospital_db psql -U bassilekin -d hospital_flask
+cat dump.sql | docker exec -i postgres_bassilekin_21T2352 psql -U postgres -d hospital_inf222
 ```
 - Cela injecte le contenu du dump dans la base PostgreSQL du conteneur.
 ---
